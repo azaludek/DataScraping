@@ -4,7 +4,7 @@ Simple data scraping from given URL, done with the help of this tutorial: <br> h
 <br>
 <img align="center" width="100%" src="Screenshot_1.jpg"></img>
 ## If you wanna try this:
-- Install R on you computer (https://www.r-project.org/
+- Install R on you computer (https://www.r-project.org/)
 - Install packages in R’s terminal: install.packages("rvest"); install.packages("dplyr")
 - Clone this repo, open it in your code editor
 - Run the script
