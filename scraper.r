@@ -1,12 +1,14 @@
 library(rvest)
+library(dplyr)
 
-url <- read_html("https://www.alexa.com/topsites/countries/IN")
-webpage <- read_html(url)
+link <- "https://editorial.rottentomatoes.com/guide/100-best-classic-movies"
+page <- read_html(link)
 
-header <- html_nodes(webpage, "h1")
-header_text <- html_text(header)
+name <- page %>% html_nodes(".article_movie_title a") %>% html_text()
+rating <- page %>% html_nodes(".tMeterScore") %>% html_text()
+synopsis <- page %>% html_nodes(".synopsis") %>% html_text()
 
-urls <- html_nodes(webpage, "a") %>% html_attr("href")
-images <- html_nodes(webpage, "img") %>% html_attr("src")
+movies <- cbind(name,rating)
+movies <- data.frame(name, rating, synopsis, stringsAsFactors = FALSE)
 
-print(header_text)
+write.csv(movies, "movies.csv")
